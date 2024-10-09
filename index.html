@@ -59,10 +59,10 @@
             font-size: 0.9rem;
         }
 
-            .button:hover {
-                color: #f51db3;
-                text-shadow: 0 0 10px #f51db3;
-            }
+        .button:hover {
+            color: #f51db3;
+            text-shadow: 0 0 10px #f51db3;
+        }
 
         .button {
             text-shadow: 0 0 10px white;
@@ -93,10 +93,10 @@
             transition: transform 0.3s, background-color 0.3s; /* Add transition for transform */
         }
 
-            .product-box:hover {
-                transform: scale(1.1); /* Smoothly grow by 10% */
-                background-color: #333; /* Keep hover effect */
-            }
+        .product-box:hover {
+            transform: scale(1.1); /* Smoothly grow by 10% */
+            background-color: #333; /* Keep hover effect */
+        }
 
         .product-image {
             width: 100%;
@@ -144,7 +144,7 @@
     <div class="container">
         <img src="assets/nicepeople.png" alt="Marketplace Image" class="image">
         <div class="buttons">
-            <a href="https://discord.gg/physixx" class="button">Discord</a> <!-- Changed to link -->
+            <a href="https://discord.gg/physixx" class="button">Discord</a>
             <a href="#products" class="button">Store</a>
         </div>
         <div class="cool-money">Cheap And Reliable</div>
@@ -215,6 +215,23 @@
     </div>
 
     <script>
+        // Title animation
+        const title = "P H Y S I X X S T O R E";
+        let index = 0;
+
+        function updateTitle() {
+            document.title = title.substring(0, index + 1);
+            index++;
+            if (index < title.length) {
+                setTimeout(updateTitle, 500); // Adjust the delay as needed
+            }
+        }
+
+        window.onload = () => {
+            updateTitle();
+        };
+
+        // Particle effect
         function createParticle() {
             const particle = document.createElement('div');
             particle.classList.add('particle');
