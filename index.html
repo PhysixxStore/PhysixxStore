@@ -34,7 +34,6 @@
             0%, 100% {
                 transform: translateY(0);
             }
-
             50% {
                 transform: translateY(-10px);
             }
@@ -57,15 +56,13 @@
             transition: all 0.3s ease;
             text-decoration: none;
             font-size: 0.9rem;
+            border: 2px solid white;
+            border-radius: 5px;
         }
 
         .button:hover {
-            color: #f51db3;
-            text-shadow: 0 0 10px #f51db3;
-        }
-
-        .button {
-            text-shadow: 0 0 10px white;
+            background-color: #f51db3;
+            color: black;
         }
 
         .cool-money {
@@ -94,7 +91,7 @@
         }
 
         .product-box:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             background-color: #333;
         }
 
@@ -111,37 +108,9 @@
             text-shadow: 0 0 5px white;
         }
 
-        .selected-product {
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        /* Particle styles */
-        .particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: white;
-            border-radius: 50%;
-            animation: fall linear infinite;
-            opacity: 0.8;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-10px) translateX(0);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(100vh) translateX(10px);
-                opacity: 0;
-            }
-        }
-
         /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed; 
             z-index: 1; 
             left: 0;
@@ -159,6 +128,7 @@
             border: 1px solid white;
             width: 80%; 
             text-align: center;
+            border-radius: 10px;
         }
 
         .close {
@@ -176,6 +146,26 @@
             cursor: pointer;
         }
 
+        /* Cash App styles */
+        .cash-app {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #2a2a2a;
+            border: 1px solid white;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .cash-app .close {
+            float: right;
+            cursor: pointer;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
@@ -196,6 +186,8 @@
                 <p>Price: $10</p>
                 <p>Stock: Available ∞</p>
             </div>
+            <a href="https://paypal.me/nopenuuh" class="button">PayPal</a>
+            <button class="button" onclick="showCashApp()">Cash App</button>
         </div>
         <div class="product-box" onclick="selectProduct('Product 2', '$20', 'Available ∞', 'assets/Midnight.jpg')">
             <img src="assets/Midnight.jpg" alt="Product 2" class="product-image">
@@ -204,6 +196,8 @@
                 <p>Price: $20</p>
                 <p>Stock: Available ∞</p>
             </div>
+            <a href="https://paypal.me/nopenuuh" class="button">PayPal</a>
+            <button class="button" onclick="showCashApp()">Cash App</button>
         </div>
         <div class="product-box" onclick="selectProduct('Product 3', '$33', 'Out of Stock ∞', 'assets/NL.jpg')">
             <img src="assets/NL.jpg" alt="Product 3" class="product-image">
@@ -212,6 +206,8 @@
                 <p>Price: $33</p>
                 <p>Stock: Out of Stock ∞</p>
             </div>
+            <a href="https://paypal.me/nopenuuh" class="button">PayPal</a>
+            <button class="button" onclick="showCashApp()">Cash App</button>
         </div>
         <div class="product-box" onclick="selectProduct('Product 4', '$6', 'Available ∞', 'assets/Predator.png')">
             <img src="assets/Predator.png" alt="Product 4" class="product-image">
@@ -220,6 +216,8 @@
                 <p>Price: $6</p>
                 <p>Stock: Available ∞</p>
             </div>
+            <a href="https://paypal.me/nopenuuh" class="button">PayPal</a>
+            <button class="button" onclick="showCashApp()">Cash App</button>
         </div>
         <div class="product-box" onclick="selectProduct('Product 5', '$18', 'Limited Stock ∞', 'assets/Nixware.jpg')">
             <img src="assets/Nixware.jpg" alt="Product 5" class="product-image">
@@ -228,6 +226,8 @@
                 <p>Price: $18</p>
                 <p>Stock: Limited Stock ∞</p>
             </div>
+            <a href="https://paypal.me/nopenuuh" class="button">PayPal</a>
+            <button class="button" onclick="showCashApp()">Cash App</button>
         </div>
         <div class="product-box" onclick="selectProduct('Product 6', '$12', 'Available ∞', 'assets/Memesense.jpg')">
             <img src="assets/Memesense.jpg" alt="Product 6" class="product-image">
@@ -236,14 +236,18 @@
                 <p>Price: $12</p>
                 <p>Stock: Available ∞</p>
             </div>
+            <a href="https://paypal.me/nopenuuh" class="button">PayPal</a>
+            <button class="button" onclick="showCashApp()">Cash App</button>
         </div>
         <div class="product-box" onclick="selectProduct('Product 7', '$30', 'Available ∞', 'assets/Plague.jpg')">
             <img src="assets/Plague.jpg" alt="Product 7" class="product-image">
             <div class="product-info">
-                <p>Plaguecheat.cc</p>
+                <p>Plaugecheat.cc</p>
                 <p>Price: $30</p>
                 <p>Stock: Available ∞</p>
             </div>
+            <a href="https://paypal.me/nopenuuh" class="button">PayPal</a>
+            <button class="button" onclick="showCashApp()">Cash App</button>
         </div>
     </div>
 
@@ -252,13 +256,19 @@
         <p id="selected-details">Details will be displayed here...</p>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal for product details -->
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <img id="modal-image" src="" alt="Product Image" style="width: 100%; max-width: 300px;">
             <p id="modal-price"></p>
         </div>
+    </div>
+
+    <!-- Cash App Popup -->
+    <div id="cashAppPopup" class="cash-app">
+        <span class="close" onclick="closeCashApp()">&times;</span>
+        <p>Cash App Username: $Y1RZ</p>
     </div>
 
     <script>
@@ -293,10 +303,24 @@
             modal.style.display = "none";
         }
 
+        function showCashApp() {
+            const cashAppPopup = document.getElementById('cashAppPopup');
+            cashAppPopup.style.display = "block";
+        }
+
+        function closeCashApp() {
+            const cashAppPopup = document.getElementById('cashAppPopup');
+            cashAppPopup.style.display = "none";
+        }
+
         window.onclick = function(event) {
             const modal = document.getElementById('productModal');
+            const cashAppPopup = document.getElementById('cashAppPopup');
             if (event.target === modal) {
                 closeModal();
+            }
+            if (event.target === cashAppPopup) {
+                closeCashApp();
             }
         }
     </script>
