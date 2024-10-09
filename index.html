@@ -103,11 +103,6 @@
             border-bottom: 2px solid white;
         }
 
-        .product-info {
-            font-size: 0.9rem;
-            text-shadow: 0 0 5px white;
-        }
-
         /* Modal styles */
         .modal {
             display: none;
@@ -179,59 +174,52 @@
     </div>
 
     <div id="products" class="products">
-        <div class="product-box" onclick="selectProduct('GameSense Crack (CS:GO)', 'Price: $15 (30 days) / $18 (CS2)', 'Available ∞', 'assets/Gamesense.png')">
+        <div class="product-box" onclick="selectProduct('GameSense Crack (CS:GO)', 'assets/Gamesense.png')">
             <img src="assets/Gamesense.png" alt="Product 1" class="product-image">
             <div class="product-info">
                 <p>GameSense Crack (CS:GO)</p>
-                <p>Price: $15 (30 days) / $18 (CS2)</p>
                 <p>Stock: Available ∞</p>
             </div>
         </div>
-        <div class="product-box" onclick="selectProduct('Neverlose', 'Price: €32 (30 days) / €70 (90 days) / €135 (180 days) / €200 (365 days)', 'Available ∞', 'assets/NL.jpg')">
+        <div class="product-box" onclick="selectProduct('Neverlose', 'assets/NL.jpg')">
             <img src="assets/NL.jpg" alt="Product 3" class="product-image">
             <div class="product-info">
                 <p>Neverlose</p>
-                <p>Price: €32 (30 days) / €70 (90 days) / €135 (180 days) / €200 (365 days)</p>
                 <p>Stock: Available ∞</p>
             </div>
         </div>
-        <div class="product-box" onclick="selectProduct('Nixware', 'Price: $3 (1 day) / $4.50 (14 days) / $6.50 (30 days)', 'Available ∞', 'assets/Nixware.jpg')">
+        <div class="product-box" onclick="selectProduct('Nixware', 'assets/Nixware.jpg')">
             <img src="assets/Nixware.jpg" alt="Product 5" class="product-image">
             <div class="product-info">
                 <p>Nixware</p>
-                <p>Price: $3 (1 day) / $4.50 (14 days) / $6.50 (30 days)</p>
                 <p>Stock: Available ∞</p>
             </div>
         </div>
-        <div class="product-box" onclick="selectProduct('Predator', 'Price: $6 (30 days)', 'Available ∞', 'assets/Predator.png')">
+        <div class="product-box" onclick="selectProduct('Predator', 'assets/Predator.png')">
             <img src="assets/Predator.png" alt="Product 4" class="product-image">
             <div class="product-info">
                 <p>Predator</p>
-                <p>Price: $6 (30 days)</p>
                 <p>Stock: Available ∞</p>
             </div>
         </div>
-        <div class="product-box" onclick="selectProduct('Memesense', 'Price: €5 (14 days) / €7 (30 days) / €12 (90 days) / €17 (180 days)', 'Available ∞', 'assets/Memesense.jpg')">
+        <div class="product-box" onclick="selectProduct('Memesense', 'assets/Memesense.jpg')">
             <img src="assets/Memesense.jpg" alt="Product 6" class="product-image">
             <div class="product-info">
                 <p>Memesense</p>
-                <p>Price: €5 (14 days) / €7 (30 days) / €12 (90 days) / €17 (180 days)</p>
                 <p>Stock: Available ∞</p>
             </div>
         </div>
-        <div class="product-box" onclick="selectProduct('Midnight', 'Price: €7 (30 days)', 'Available ∞', 'assets/Midnight.jpg')">
+        <div class="product-box" onclick="selectProduct('Midnight', 'assets/Midnight.jpg')">
             <img src="assets/Midnight.jpg" alt="Product 7" class="product-image">
             <div class="product-info">
                 <p>Midnight</p>
-                <p>Price: €7 (30 days)</p>
                 <p>Stock: Available ∞</p>
             </div>
         </div>
-        <div class="product-box" onclick="selectProduct('Plague Cheese', 'Price: €17 (30 days)', 'Available ∞', 'assets/PlagueCheese.jpg')">
+        <div class="product-box" onclick="selectProduct('Plague Cheese', 'assets/PlagueCheese.jpg')">
             <img src="assets/PlagueCheese.jpg" alt="Product 8" class="product-image">
             <div class="product-info">
                 <p>Plague Cheese</p>
-                <p>Price: €17 (30 days)</p>
                 <p>Stock: Available ∞</p>
             </div>
         </div>
@@ -241,7 +229,8 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <img id="modal-image" src="" alt="Product Image" style="max-width: 100%;">
-            <p id="modal-price"></p>
+            <div id="modal-options"></div>
+            <p id="modal-price" style="display: none;"></p>
             <a href="https://paypal.me/nopenuuh" class="button">PayPal</a>
             <button onclick="showCashApp()" class="button">Cash App</button>
         </div>
@@ -253,15 +242,72 @@
     </div>
 
     <script>
-        function selectProduct(name, price, stock, image) {
+        function selectProduct(name, image) {
             const modal = document.getElementById('productModal');
             const modalImage = document.getElementById('modal-image');
+            const modalOptions = document.getElementById('modal-options');
             const modalPrice = document.getElementById('modal-price');
 
             modalImage.src = image;
-            modalPrice.textContent = `${price}, Stock: ${stock}`;
+            modalPrice.style.display = "none"; // Hide price initially
+
+            // Clear previous options
+            modalOptions.innerHTML = '';
+
+            // Add specific options for each product
+            if (name === 'GameSense Crack (CS:GO)') {
+                modalOptions.innerHTML = `
+                    <p>Select Duration:</p>
+                    <button onclick="showPrice('15€', 'CSGO 30 Days')">CS:GO 30 Days</button>
+                    <button onclick="showPrice('18€', 'CS:GO CS2')">CS:GO CS2</button>
+                `;
+            } else if (name === 'Neverlose') {
+                modalOptions.innerHTML = `
+                    <p>Select Duration:</p>
+                    <button onclick="showPrice('32€', '30 Days')">30 Days</button>
+                    <button onclick="showPrice('70€', '90 Days')">90 Days</button>
+                    <button onclick="showPrice('135€', '180 Days')">180 Days</button>
+                    <button onclick="showPrice('200€', '365 Days')">365 Days</button>
+                `;
+            } else if (name === 'Nixware') {
+                modalOptions.innerHTML = `
+                    <p>Select Duration:</p>
+                    <button onclick="showPrice('3€', '1 Day')">1 Day</button>
+                    <button onclick="showPrice('4.50€', '14 Days')">14 Days</button>
+                    <button onclick="showPrice('6.50€', '30 Days')">30 Days</button>
+                `;
+            } else if (name === 'Predator') {
+                modalOptions.innerHTML = `
+                    <p>Select Duration:</p>
+                    <button onclick="showPrice('6€', '30 Days')">30 Days</button>
+                `;
+            } else if (name === 'Memesense') {
+                modalOptions.innerHTML = `
+                    <p>Select Duration:</p>
+                    <button onclick="showPrice('5€', '14 Days')">14 Days</button>
+                    <button onclick="showPrice('7€', '30 Days')">30 Days</button>
+                    <button onclick="showPrice('12€', '90 Days')">90 Days</button>
+                    <button onclick="showPrice('17€', '180 Days')">180 Days</button>
+                `;
+            } else if (name === 'Midnight') {
+                modalOptions.innerHTML = `
+                    <p>Select Duration:</p>
+                    <button onclick="showPrice('7€', '30 Days')">30 Days</button>
+                `;
+            } else if (name === 'Plague Cheese') {
+                modalOptions.innerHTML = `
+                    <p>Select Duration:</p>
+                    <button onclick="showPrice('17€', '30 Days')">30 Days</button>
+                `;
+            }
 
             modal.style.display = "block";
+        }
+
+        function showPrice(price, duration) {
+            const modalPrice = document.getElementById('modal-price');
+            modalPrice.textContent = `Price: ${price} for ${duration}`;
+            modalPrice.style.display = "block"; // Show price
         }
 
         function closeModal() {
