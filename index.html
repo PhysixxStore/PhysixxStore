@@ -10,8 +10,7 @@
             color: white;
             font-family: Arial, sans-serif;
             margin: 0;
-            overflow-y: auto; /* Allow vertical scrolling */
-            height: 100vh; /* Use full viewport height */
+            overflow-y: auto;
         }
         header {
             background-color: darkpurple;
@@ -39,9 +38,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            max-height: calc(100vh - 160px); /* Adjust height based on header and footer */
-            overflow-y: auto; /* Allow vertical scrolling within the container */
-            padding: 10px; /* Optional: add some padding */
+            max-height: calc(100vh - 160px);
+            overflow-y: auto;
         }
         .product {
             background-color: darkpurple;
@@ -143,7 +141,7 @@
 
         function addToCart(productName, price) {
             if (price > 0) {
-                cartItems.push({ name: productName, price: price, imgSrc: 'https://via.placeholder.com/150' });
+                cartItems.push({ name: productName, price: price, imgSrc: 'assets/Gamesense.png' });
                 totalPrice += price;
                 alert(`${productName} has been added to your cart!`);
                 showCart();
@@ -238,7 +236,7 @@
         <div class="product">
             <img src="assets/Memesense.jpg" alt="Memesense">
             <h2>Memesense</h2>
-            <p>Budget Legit cheat </p>
+            <p>Budget Legit cheat</p>
             <select onchange="this.dataset.price = this.value;">
                 <option value="5">14 Days - 5€</option>
                 <option value="7">30 Days - 7€</option>
@@ -275,7 +273,7 @@
             <button class="button" onclick="addToCart('Gamesense CSGO Cr4ck', 18)">Add to Cart</button>
         </div>
         <div class="product">
-            <img src="assets/nixware.jpg" alt="Nixware">
+            <img src="assets/Nixware.jpg" alt="Nixware">
             <h2>Nixware</h2>
             <p>Legit and Rage cheat.</p>
             <select onchange="this.dataset.price = this.value;">
@@ -286,59 +284,7 @@
             <button class="button" onclick="addToCart('Nixware', parseFloat(this.previousElementSibling.dataset.price))">Add to Cart</button>
         </div>
         <div class="product">
-            <img src="path/to/aimware.jpg" alt="Aimware Cr4ck">
-            <h2>Aimware Cr4ck</h2>
-            <p>Aimware.net Crack.</p>
-            <select onchange="this.dataset.price = this.value;">
-                <option value="3">1 Day - 3€</option>
-                <option value="6">30 Days - 6€</option>
-            </select>
-            <button class="button" onclick="addToCart('Aimware Cr4ck', parseFloat(this.previousElementSibling.dataset.price))">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="path/to/fatality_india.jpg" alt="Fatality Cr4ck INDIA">
-            <h2>Fatality Cr4ck INDIA</h2>
-            <p>Fatality Crack INDIA.</p>
-            <select onchange="this.dataset.price = this.value;">
-                <option value="4.5">7 Days - 4.5€</option>
-                <option value="13">30 Days - 13€</option>
-            </select>
-            <button class="button" onclick="addToCart('Fatality Cr4ck INDIA', parseFloat(this.previousElementSibling.dataset.price))">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="path/to/fatality_expandera.jpg" alt="Fatality Cr4ck EXPANDERA">
-            <h2>Fatality Cr4ck EXPANDERA</h2>
-            <p>Fatality Cr4ck EXPANDERA.</p>
-            <select onchange="this.dataset.price = this.value;">
-                <option value="2">1 Day - 2€</option>
-                <option value="3">3 Days - 3€</option>
-                <option value="4.5">7 Days - 4.50€</option>
-                <option value="12">30 Days - 12€</option>
-            </select>
-            <button class="button" onclick="addToCart('Fatality Cr4ck EXPANDERA', parseFloat(this.previousElementSibling.dataset.price))">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="path/to/plague_cheese.jpg" alt="Plague Cheese">
-            <h2>Plague Cheese</h2>
-            <p>Plague Cheese.</p>
-            <select onchange="this.dataset.price = this.value;">
-                <option value="17">30 Days - 17€</option>
-            </select>
-            <button class="button" onclick="addToCart('Plague Cheese', 17)">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="path/to/plague_expandera.jpg" alt="Plague Cr4ck Expandera">
-            <h2>Plague Cr4ck Expandera</h2>
-            <p>Plague Cr4ck Expandera.</p>
-            <select onchange="this.dataset.price = this.value;">
-                <option value="2.5">1 Day - 2.50€</option>
-                <option value="4">7 Days - 4€</option>
-                <option value="7">30 Days - 7€</option>
-            </select>
-            <button class="button" onclick="addToCart('Plague Cr4ck Expandera', parseFloat(this.previousElementSibling.dataset.price))">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="path/to/neverlose_cs2.jpg" alt="Neverlose CS2">
+            <img src="assets/NL.jpg" alt="Neverlose CS2">
             <h2>Neverlose CS2</h2>
             <p>Neverlose CS2.</p>
             <select onchange="this.dataset.price = this.value;">
@@ -348,6 +294,24 @@
                 <option value="195">365 Days - 195€</option>
             </select>
             <button class="button" onclick="addToCart('Neverlose CS2', parseFloat(this.previousElementSibling.dataset.price))">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="assets/Plague.jpg" alt="Plague">
+            <h2>Plague Cheese</h2>
+            <p>Plague Cheese.</p>
+            <select onchange="this.dataset.price = this.value;">
+                <option value="17">30 Days - 17€</option>
+            </select>
+            <button class="button" onclick="addToCart('Plague Cheese', 17)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="assets/Predator.png" alt="Predator">
+            <h2>Predator Cr4ck</h2>
+            <p>Predator Cr4ck.</p>
+            <select onchange="this.dataset.price = this.value;">
+                <option value="12">30 Days - 12€</option>
+            </select>
+            <button class="button" onclick="addToCart('Predator Cr4ck', 12)">Add to Cart</button>
         </div>
     </section>
 
