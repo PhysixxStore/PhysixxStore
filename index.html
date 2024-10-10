@@ -82,6 +82,11 @@
             padding: 10px;
             cursor: pointer;
         }
+        .cart-count {
+            color: pink;
+            font-weight: bold;
+            margin-left: 5px;
+        }
         .popup {
             display: none;
             position: fixed;
@@ -143,15 +148,21 @@
             if (price > 0) {
                 cartItems.push({ name: productName, price: price, imgSrc: imgSrc });
                 totalPrice += price;
-                alert(`${productName} has been added to your cart!`);
-                showCart();
+                updateCartCount();
             }
         }
 
         function removeFromCart(index) {
             totalPrice -= cartItems[index].price;
             cartItems.splice(index, 1);
+            updateCartCount();
             showCart();
+        }
+
+        function updateCartCount() {
+            const cartButton = document.getElementById('cartButton');
+            const countDisplay = document.getElementById('cartCount');
+            countDisplay.textContent = cartItems.length > 0 ? cartItems.length : '';
         }
 
         function showCart() {
@@ -229,7 +240,7 @@
             <a href="https://discord.gg/physixx" target="_blank">Contact Us</a>
             <a href="#credit" onclick="showCredits()">Credit</a>
         </nav>
-        <button class="cart-button" onclick="showCart()">Cart</button>
+        <button id="cartButton" class="cart-button" onclick="showCart()">Cart<span id="cartCount" class="cart-count"></span></button>
     </header>
     
     <section id="products" class="product-container">
@@ -306,12 +317,12 @@
         </div>
         <div class="product">
             <img src="assets/Predator.png" alt="Predator">
-            <h2>Predator </h2>
-            <p>Predator .</p>
+            <h2>Predator</h2>
+            <p>Predator.</p>
             <select onchange="this.dataset.price = this.value;">
-                <option value="12">30 Days - 5€</option>
+                <option value="5">30 Days - 5€</option>
             </select>
-            <button class="button" onclick="addToCart('Predator ', 5, 'assets/Predator.png')">Add to Cart</button>
+            <button class="button" onclick="addToCart('Predator', 5, 'assets/Predator.png')">Add to Cart</button>
         </div>
     </section>
 
