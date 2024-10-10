@@ -10,7 +10,8 @@
             color: white;
             font-family: Arial, sans-serif;
             margin: 0;
-            overflow: hidden;
+            overflow-y: auto; /* Allow vertical scrolling */
+            height: 100vh; /* Use full viewport height */
         }
         header {
             background-color: darkpurple;
@@ -38,6 +39,9 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            max-height: calc(100vh - 160px); /* Adjust height based on header and footer */
+            overflow-y: auto; /* Allow vertical scrolling within the container */
+            padding: 10px; /* Optional: add some padding */
         }
         .product {
             background-color: darkpurple;
@@ -74,8 +78,8 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: black; /* Changed to black */
-            color: white; /* Changed text to white */
+            background-color: black;
+            color: white;
             border: none;
             padding: 10px;
             cursor: pointer;
@@ -86,7 +90,7 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            background-color: black; /* Changed to pure black */
+            background-color: black;
             padding: 20px;
             border: 2px solid pink;
             z-index: 1000;
@@ -316,7 +320,7 @@
         <div class="product">
             <img src="path/to/plague_cheese.jpg" alt="Plague Cheese">
             <h2>Plague Cheese</h2>
-            <p> Plague Cheese.</p>
+            <p>Plague Cheese.</p>
             <select onchange="this.dataset.price = this.value;">
                 <option value="17">30 Days - 17€</option>
             </select>
